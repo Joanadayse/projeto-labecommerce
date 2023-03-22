@@ -1,4 +1,8 @@
-
+export enum CATEGORIAS{
+  ACCESSORIES = "Acessórios",
+  CLOTHES_AND_SHOES = "Roupas e calçados",
+  ELECTRONICS = "Eletrônicos"
+  }
 
 // pessoa cliente cadastrada
 
@@ -13,7 +17,7 @@ export type Product ={
     id : string,
     name: string,
     price: number,
-    category: string
+    category: CATEGORIAS
   }
 
 //   compra realizada por cliente
