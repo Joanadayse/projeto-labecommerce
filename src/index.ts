@@ -83,4 +83,121 @@ app.get('/users', (req:Request, res:Response)=>{
     res.status(201).send("Compra realizada com sucesso")
  })
 
+ //  -----------APROFUNDANDO-EXPRESS
+
+// EXERCICIO 1
+app.get("/products/:id" , (req:Request, res:Response)=>{
+    const id= req.params.id as string
+    
+    const indexToId= baseProduct.find((product)=>{
+        return product.id === id
+    })
+
+    if(indexToId){
+        res.status(200).send("objeto product encontrado")
+    }
+   
+})
+
+app.get("/users/:id/purchases" , (req:Request, res:Response)=>{
+    const userId= req.params.id as string
+    const indexId= basePurchase.find((purchase)=>{
+        purchase.userId=== userId
+    })
+
+    if(indexId){
+        res.status(200).send("array de compras do user procurado")
+    }
+    
+
+  
+})
+
+// EXERCICIO 2
+
+app.delete("/users/:id", (req:Request, res:Response)=>{
+    const id = req.params.id
+   
+
+    const indexToRemove= baseUser.findIndex((user)=>{
+        return user.id === id
+    })
+
+    if (indexToRemove >=0){
+        baseUser.splice(indexToRemove,1)
+
+    }
+
+    res.status(200).send("User apagado com sucesso")
+
+})
+
+app.delete("/products/:id", (req:Request, res:Response)=>{
+    const id = req.params.id
+   
+
+    const indexToRemove= baseProduct.findIndex((product)=>{
+        return product.id === id
+    })
+
+    if (indexToRemove >=0){
+        baseProduct.splice(indexToRemove,1)
+
+    }
+
+    res.status(200).send("Produto apagado com sucesso")
+
+})
+
+// EXERCICIO 3
+
+app.put('/users/:id' , (req: Request, res: Response)=>{
+    const id= req.params.id 
+
+    const newId = req.body.id
+    const newEmail= req.body.email
+    const newPassword= req.body.password
+  
+
+    const user= baseUser.find((user)=>{
+        return user.id === id
+    })
+
+    if(user){
+        user.id= newId || user.id
+        user.email= newEmail || user.email
+        user.password= newPassword || user.password
+      
+    }
+
+    res.status(200).send("Atualização realizada")
+
+})
+
+app.put('/products/:id' , (req: Request, res: Response)=>{
+    const id= req.params.id 
+
+    const newId = req.body.id
+    const newName= req.body.name
+    const newPrice= req.body.price
+
+  
+  
+
+    const product= baseProduct.find((product)=>{
+        return product.id === id
+    })
+
+    if(product){
+        product.id= newId || product.id
+        product.name= newName || product.name
+        product.price= newPrice || product.price
+      
+    }
+
+    res.status(200).send("Atualização realizada")
+
+})
+
+
 
