@@ -36,16 +36,50 @@ export function getAllUser():User[]{
 export const baseProduct: Product[]=[
     {
         id : "01",
-        name: "sapatp",
+        name: "sapato",
         price: 6,
+        category: CATEGORIAS.CLOTHES_AND_SHOES
+
+   
+    },
+    {
+        id : "02",
+        name: "colar",
+        price: 10,
+        category: CATEGORIAS.ACCESSORIES
+    },   
+    
+    {
+        id : "03",
+        name: "bolsa",
+        price: 6,
+        category: CATEGORIAS.ACCESSORIES
+    },
+    {
+        id : "04",
+        name: "blusa",
+        price: 10,
         category: CATEGORIAS.CLOTHES_AND_SHOES
     },
     {
-        id : "01",
-        name: "Colar",
-        price: 10,
-        category: CATEGORIAS.ACCESSORIES
-    },       
+        id : "05",
+        name: "celular",
+        price: 50,
+        category: CATEGORIAS.ELECTRONICS
+    },   
+    {
+        id: "06",
+        name: "Mouse gamer",
+        price: 250,
+        category:CATEGORIAS.ELECTRONICS
+    },
+    {
+        id: "07",
+        name: "Monitor",
+        price: 900,
+       category: CATEGORIAS.ELECTRONICS
+    },
+   
 ]
 
 
@@ -112,7 +146,7 @@ export function createPurchase(userId : string,
     
     // função que buscar por id do comprador
     
-    export function buscarPorIdComprador(id:string):Purchase[]{
+export function buscarPorIdComprador(id:string):Purchase[]{
         return  basePurchase.filter((item)=>{return item.userId === id})
       }
     
