@@ -434,10 +434,9 @@ app.delete("/users/:id",async (req: Request, res: Response) => {
       throw new Error("'id' não encontrado");
 
     }
-    await db("purchasess").where({buyer_id:idToDelete }).del()
-     await db("users").where({ id: idToDelete }).del()
+    
+    await db("users").del().where({ id: idToDelete });
   
-   
     res.status(200).send("user deletado com sucesso")
 
 
@@ -476,8 +475,7 @@ app.delete("/products/:id",async (req: Request, res: Response) => {
 
     }
 
-    await db("purchases_products").del().where({product_id:idToDelete })
-    await db("products").del().where({ id: idToDelete })
+    await db("products").del().where({ id: idToDelete });
     res.status(200).send("product deletado com sucesso")
 
 
